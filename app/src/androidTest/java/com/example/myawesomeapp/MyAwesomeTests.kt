@@ -25,6 +25,7 @@ class MyAwesomeTests {
 
     @Test
     fun checkMainScreen() {
+        // changes
         onView(
             allOf(
                 withId(R.id.text_home),
