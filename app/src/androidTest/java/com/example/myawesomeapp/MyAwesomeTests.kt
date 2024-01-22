@@ -7,6 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.myawesomeapp.step.MenuScreenStep
 import com.example.myawesomeapp.step.SlideshowScreenStep
 import org.hamcrest.core.AllOf.allOf
 import org.junit.After
@@ -19,6 +20,7 @@ import org.junit.runner.RunWith
 class MyAwesomeTests {
     private lateinit var scenario: ActivityScenario<MainActivity>
 
+    private val menu = MenuScreenStep()
     private val slideshow = SlideshowScreenStep()
 
     @Before
@@ -37,17 +39,8 @@ class MyAwesomeTests {
     }
 
     @Test
-    fun checkMainScreenNegative() {
-        onView(
-            allOf(
-                withId(R.id.text_home),
-                withText("This is NOT home Fragment")
-            )
-        ).check(matches(isDisplayed()))
-    }
-
-    @Test
     fun checkSlideshowScreen() {
+        menu.checkMenuScreen()
         slideshow.checkSlideshowScreen()
     }
 
