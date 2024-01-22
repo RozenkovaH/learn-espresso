@@ -9,5 +9,6 @@ class SlideshowScreenStep {
 
     fun checkSlideshowScreen() {
         slideshowScreenElement.slideshowScreenText().check(matches(isDisplayed()))
+        slideshowScreenElement.slideshowToolbarText().check(matches(isDisplayed()))
     }
 }

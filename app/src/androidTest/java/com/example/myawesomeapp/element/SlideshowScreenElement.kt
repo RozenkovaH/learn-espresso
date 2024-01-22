@@ -2,6 +2,7 @@ package com.example.myawesomeapp.element
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
+import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.example.myawesomeapp.R
@@ -13,6 +14,15 @@ class SlideshowScreenElement {
             allOf(
                 withId(R.id.text_slideshow),
                 withText("This is slideshow Fragment")
+            )
+        )
+    }
+
+    fun slideshowToolbarText(): ViewInteraction {
+        return onView(
+            allOf(
+                withText("Slideshow"),
+                isDescendantOfA(withId(R.id.toolbar))
             )
         )
     }

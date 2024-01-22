@@ -40,7 +40,8 @@ class MyAwesomeTests {
 
     @Test
     fun checkSlideshowScreen() {
-        menu.checkMenuScreen()
+        menu.openMenu()
+        menu.clickSlideshowOption()
         slideshow.checkSlideshowScreen()
     }
 

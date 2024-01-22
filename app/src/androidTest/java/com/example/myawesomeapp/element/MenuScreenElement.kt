@@ -1,6 +1,6 @@
 package com.example.myawesomeapp.element
 
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -12,7 +12,7 @@ import com.google.android.material.R as materialR
 
 class MenuScreenElement {
     fun menuBtn(): ViewInteraction {
-        return Espresso.onView(
+        return onView(
             anyOf(
                 withContentDescription(R.string.navigation_drawer_open),
                 withContentDescription("Открыть панель навигации")
@@ -21,7 +21,7 @@ class MenuScreenElement {
     }
 
     fun menuOptionSlideshow(): ViewInteraction {
-        return Espresso.onView(
+        return onView(
             allOf(
                 withText("Slideshow"),
                 withId(materialR.id.design_menu_item_text)
