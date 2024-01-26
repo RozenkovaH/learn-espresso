@@ -7,6 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.myawesomeapp.step.GalleryStep
 import com.example.myawesomeapp.step.GreenButtonStep
 import com.example.myawesomeapp.step.MenuScreenStep
 import com.example.myawesomeapp.step.MenuSidebarStep
@@ -28,6 +29,7 @@ class MyAwesomeTests {
     private val toolbar = ToolbarStep()
     private val sidebar = MenuSidebarStep()
     private val greenButton = GreenButtonStep()
+    private val gallery = GalleryStep()
 
     @Before
     fun setup() {
@@ -49,7 +51,7 @@ class MyAwesomeTests {
         menu.openMenu()
         menu.clickSlideshowOption()
         slideshow.checkSlideshowScreen()
-}*/
+
 
     @Test
     fun checkMenuSidebar() {
@@ -64,6 +66,14 @@ class MyAwesomeTests {
         greenButton.greenButtonCheck()
         greenButton.notificationCheck()
         greenButton.notificationClose()
+    }}*/
+
+    @Test
+    fun checkGalleryScreen() {
+        gallery.galleryBtnCheck()
+        gallery.galleryScreenCheck()
+        gallery.firstItemsCheck()
+        gallery.lastItemsCheck()
     }
 
     @After
