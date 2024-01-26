@@ -7,6 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.example.myawesomeapp.step.GreenButtonStep
 import com.example.myawesomeapp.step.MenuScreenStep
 import com.example.myawesomeapp.step.MenuSidebarStep
 import com.example.myawesomeapp.step.SlideshowScreenStep
@@ -26,13 +27,14 @@ class MyAwesomeTests {
     private val slideshow = SlideshowScreenStep()
     private val toolbar = ToolbarStep()
     private val sidebar = MenuSidebarStep()
+    private val greenButton = GreenButtonStep()
 
     @Before
     fun setup() {
         scenario = ActivityScenario.launch(MainActivity::class.java)
     }
 
-    /*@Test
+    @Test
     fun checkMainScreen() {
         onView(
             allOf(
@@ -42,7 +44,7 @@ class MyAwesomeTests {
         ).check(matches(isDisplayed()))
     }
 
-    @Test
+    /*@Test
     fun checkSlideshowScreen() {
         menu.openMenu()
         menu.clickSlideshowOption()
@@ -55,6 +57,13 @@ class MyAwesomeTests {
         sidebar.userInfoCheck()
         sidebar.sidebarButtonsCheck()
         sidebar.checkHomeScreen()
+    }
+
+    @Test
+    fun checkGreenButton() {
+        greenButton.greenButtonCheck()
+        greenButton.notificationCheck()
+        greenButton.notificationClose()
     }
 
     @After
