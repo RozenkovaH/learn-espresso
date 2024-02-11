@@ -1,18 +1,24 @@
 package com.example.myawesomeapp.step
 
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import com.example.myawesomeapp.element.ToolbarElement
 
 class ToolbarStep {
     private val toolbarElement = ToolbarElement()
 
-    fun toolbarCheck() {
-        toolbarElement.homeHeader().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        toolbarElement.optionsBtn().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        toolbarElement.menuBtn().check(ViewAssertions.matches(ViewMatchers.isDisplayed())).perform(
-            ViewActions.click())
+    fun checkToolbar() {
+        toolbarElement.toolbar().check(matches(isDisplayed()))
     }
 
+    fun checkToolbarElements() {
+        toolbarElement.homeHeader().check(matches(isDisplayed()))
+        toolbarElement.optionsBtn().check(matches(isDisplayed()))
+        toolbarElement.menuBtn().check(matches(isDisplayed()))
+    }
+
+    fun clickOnMenuBtn() {
+        toolbarElement.menuBtn().check(matches(isDisplayed())).perform(click())
+    }
 }

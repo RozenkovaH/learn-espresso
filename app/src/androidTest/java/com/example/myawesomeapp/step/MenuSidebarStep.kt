@@ -1,27 +1,38 @@
 package com.example.myawesomeapp.step
 
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isChecked
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import com.example.myawesomeapp.element.MenuSidebarElement
 
 class MenuSidebarStep {
     private val menuSidebarElement = MenuSidebarElement()
 
-    fun userInfoCheck() {
-        menuSidebarElement.userPic().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        menuSidebarElement.userName().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        menuSidebarElement.mail().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    fun checkUserPic() {
+        menuSidebarElement.userPic().check(matches(isDisplayed()))
     }
 
-    fun sidebarButtonsCheck() {
-        menuSidebarElement.galleryBtn().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        menuSidebarElement.slideshowBtn().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-        menuSidebarElement.homeBtn().check(ViewAssertions.matches(ViewMatchers.isDisplayed())).perform(
-            ViewActions.click())
+    fun checkUserInfoElements(userName: String, mail: String) {
+        menuSidebarElement.userInfoElements(userInfo = userName).check(matches(isDisplayed()))
+        menuSidebarElement.userInfoElements(userInfo = mail).check(matches(isDisplayed()))
     }
 
-    fun checkHomeScreen() {
-        menuSidebarElement.checkHomeScreen().check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+    fun checkSidebarButtons() {
+        menuSidebarElement.galleryBtn().check(matches(isDisplayed()))
+        menuSidebarElement.slideshowBtn().check(matches(isDisplayed()))
+        menuSidebarElement.homeBtn().check(matches(isDisplayed()))
+    }
+
+    fun clickHomeBtn() {
+        menuSidebarElement.homeBtn().check(matches(isDisplayed())).perform(
+            click()
+        )
+    }
+
+    fun clickGalleryBtn() {
+        menuSidebarElement.galleryBtn().check(matches(isDisplayed())).perform(click())
+            .check(matches(isChecked()))
+        menuSidebarElement.galleryBtn().check(matches(isChecked()))
     }
 }

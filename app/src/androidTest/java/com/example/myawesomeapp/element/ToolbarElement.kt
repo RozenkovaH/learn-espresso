@@ -1,29 +1,25 @@
 package com.example.myawesomeapp.element
 
-import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
-import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
-import androidx.test.espresso.matcher.ViewMatchers.hasSibling
-import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.example.myawesomeapp.R
-import org.hamcrest.CoreMatchers
-import java.util.concurrent.CompletableFuture.allOf
+import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.anyOf
 
 class ToolbarElement {
     fun toolbar(): ViewInteraction {
-        return Espresso.onView(
+        return onView(
             withId(R.id.toolbar)
         )
     }
 
     fun menuBtn(): ViewInteraction {
-        return Espresso.onView(
-            CoreMatchers.anyOf(
+        return onView(
+            anyOf(
                 withContentDescription(R.string.navigation_drawer_open),
                 withContentDescription("Открыть панель навигации")
             )
@@ -31,19 +27,19 @@ class ToolbarElement {
     }
 
     fun homeHeader(): ViewInteraction {
-        return Espresso.onView(
-            CoreMatchers.allOf(
-                ViewMatchers.withText("Home"),
+        return onView(
+            allOf(
+                withText("Home"),
                 isDescendantOfA(withId(R.id.toolbar))
             )
         )
     }
 
     fun optionsBtn(): ViewInteraction {
-        return Espresso.onView(
-            CoreMatchers.allOf(
+        return onView(
+            allOf(
                 isDescendantOfA(withId(R.id.toolbar)),
-                isAssignableFrom(LinearLayoutCompat::class.java)
+                withContentDescription("Ещё")
             )
         )
     }
